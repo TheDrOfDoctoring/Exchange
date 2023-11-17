@@ -52,7 +52,10 @@ public class ServerPlayerGameModeMixin {
             HitResult hitResult = player.pick(0,0, true);
             BlockState replacementState = item.getBlock().defaultBlockState();
             if(hitResult instanceof BlockHitResult blockHitResult) {
-                replacementState = item.getBlock().getStateForPlacement(new BlockPlaceContext(player, InteractionHand.OFF_HAND, offHandItem, blockHitResult));
+                replacementState = item.getBlock().getStateForPlacement(BlockPlaceContext.at(new BlockPlaceContext(player, InteractionHand.OFF_HAND, offHandItem, blockHitResult), pos, player.getDirection()));
+            }
+            if(replacementState == null) {
+                return;
             }
             boolean removed = state.onDestroyedByPlayer(this.level, pos, this.player, canHarvest, this.level.getFluidState(pos));
             level.setBlockAndUpdate(pos, replacementState);

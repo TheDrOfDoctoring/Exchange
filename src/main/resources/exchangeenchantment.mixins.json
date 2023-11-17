@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.thedrofdoctoring.exchangeenchantment.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "exchangeenchantment.refmap.json",
+  "mixins": [
+    "ServerPlayerGameModeMixin"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}
